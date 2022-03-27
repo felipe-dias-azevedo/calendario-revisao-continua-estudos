@@ -91,9 +91,9 @@ const updateMonth = () => {
 
     let studiesDayList = document.getElementById('studies-day-list');
     let studiesDaysData = "";
-    const materias = sessionStorage.getItem('materias');
+    const materias = localStorage.getItem('materias');
     const jsonMaterias = JSON.parse(materias);
-    const subjects = sessionStorage.getItem('subjects');
+    const subjects = localStorage.getItem('subjects');
     const jsonSubjects = JSON.parse(subjects);
     for (let i = 1; i <= daysInMonth(actualMonth+1, current.getFullYear()); i++) {
         if (jsonSubjects !== null) {
@@ -230,7 +230,7 @@ const closeModal = (typeModal = 'modal-add') => {
 
 const populateRemoveTopic = (topic, storage) => {
     let topicSelect = document.getElementById(topic);
-    const topics = sessionStorage.getItem(storage);
+    const topics = localStorage.getItem(storage);
     if (topics !== null) {
         const jsonTopics = JSON.parse(topics);
         for (let i = 0; i < jsonTopics.length; i++) {
@@ -250,7 +250,7 @@ const populateAddSubject = () => {
     document.getElementById('date-subject').value = toFormat(current);
     
     let subtopicSelect = document.getElementById('subtopic');
-    const subtopics = sessionStorage.getItem('subtopics');
+    const subtopics = localStorage.getItem('subtopics');
     if (subtopics !== null) {
         const jsonSubtopics = JSON.parse(subtopics);
         for (let i = 0; i < jsonSubtopics.length; i++) {
@@ -261,7 +261,7 @@ const populateAddSubject = () => {
         }
     }
     let materiaSelect = document.getElementById('materia');
-    const materias = sessionStorage.getItem('materias');
+    const materias = localStorage.getItem('materias');
     if (materias !== null) {
         const jsonMaterias = JSON.parse(materias);
         for (let i = 0; i < jsonMaterias.length; i++) {
@@ -277,9 +277,9 @@ const showModal = (typeModal = 'modal-add', idSubject) => {
     if (typeModal === 'modal-add') {
         changeActiveTagModal(1);
     } else if (typeModal === 'modal-details-subject') {
-        const subjects = JSON.parse(sessionStorage.getItem('subjects'));
-        const subtopics = JSON.parse(sessionStorage.getItem('subtopics'));
-        const materias = JSON.parse(sessionStorage.getItem('materias'));
+        const subjects = JSON.parse(localStorage.getItem('subjects'));
+        const subtopics = JSON.parse(localStorage.getItem('subtopics'));
+        const materias = JSON.parse(localStorage.getItem('materias'));
         const subject = subjects.filter(s => s.id === idSubject)[0];
         const date = new Date(subject.date);
         document.getElementById('modal-subject-name').innerHTML = subject.subject;
@@ -312,10 +312,10 @@ const saveSubject = () => {
     
     const successText = "Disciplina Salva!"
 
-    const subjects = sessionStorage.getItem('subjects');
+    const subjects = localStorage.getItem('subjects');
 
     if (subjects === null) {
-        sessionStorage.setItem('subjects', JSON.stringify(values));
+        localStorage.setItem('subjects', JSON.stringify(values));
         document.getElementById('subject').value = '';
         document.getElementById('subtopic').value = '';
         document.getElementById('materia').value = '';
@@ -329,7 +329,7 @@ const saveSubject = () => {
     for (let i = 0; i < values.length; i++) {
         oldSubjects.push(values[i]);
     }
-    sessionStorage.setItem('subjects', JSON.stringify(oldSubjects));
+    localStorage.setItem('subjects', JSON.stringify(oldSubjects));
     document.getElementById('subject').value = '';
     document.getElementById('subtopic').value = '';
     document.getElementById('materia').value = '';
@@ -348,11 +348,11 @@ const saveSubtopic = () => {
     const value = { subtopic };
     const successText = "Frente Salva!"
 
-    const subtopics = sessionStorage.getItem('subtopics');
+    const subtopics = localStorage.getItem('subtopics');
 
     if (subtopics === null) {
         const valueToArray = [value];
-        sessionStorage.setItem('subtopics', JSON.stringify(valueToArray));
+        localStorage.setItem('subtopics', JSON.stringify(valueToArray));
         document.getElementById('subtopic').value = "";
         alert(successText);
         return;
@@ -360,7 +360,7 @@ const saveSubtopic = () => {
 
     let oldSubtopics = JSON.parse(subtopics);
     oldSubtopics.push(value);
-    sessionStorage.setItem('subtopics', JSON.stringify(oldSubtopics));
+    localStorage.setItem('subtopics', JSON.stringify(oldSubtopics));
     document.getElementById('subtopic').value = "";
     alert(successText);
 }
@@ -376,11 +376,11 @@ const saveMateria = () => {
     const value = { materia, color: materiaColor };
     const successText = "Matéria Salva!"
 
-    const materias = sessionStorage.getItem('materias');
+    const materias = localStorage.getItem('materias');
 
     if (materias === null) {
         const valueToArray = [value];
-        sessionStorage.setItem('materias', JSON.stringify(valueToArray));
+        localStorage.setItem('materias', JSON.stringify(valueToArray));
         document.getElementById('materia').value = "";
         alert(successText);
         return;
@@ -388,7 +388,7 @@ const saveMateria = () => {
 
     let oldMaterias = JSON.parse(materias);
     oldMaterias.push(value);
-    sessionStorage.setItem('materias', JSON.stringify(oldMaterias));
+    localStorage.setItem('materias', JSON.stringify(oldMaterias));
     document.getElementById('materia').value = "";
     alert(successText);
 }
@@ -402,11 +402,11 @@ const deleteSubtopic = () => {
 
     const successText = "Frente Deletada!"
 
-    const subtopics = sessionStorage.getItem('subtopics');
+    const subtopics = localStorage.getItem('subtopics');
 
     let oldSubtopics = JSON.parse(subtopics);
     oldSubtopics.splice(subtopic, 1);
-    sessionStorage.setItem('subtopics', JSON.stringify(oldSubtopics));
+    localStorage.setItem('subtopics', JSON.stringify(oldSubtopics));
     document.getElementById('subtopic-remove').value = "";
     changeActiveTagModal(4);
     alert(successText);
@@ -421,11 +421,11 @@ const deleteMateria = () => {
 
     const successText = "Matéria Deletada!"
 
-    const materias = sessionStorage.getItem('materias');
+    const materias = localStorage.getItem('materias');
 
     let oldMaterias = JSON.parse(materias);
     oldMaterias.splice(materia, 1);
-    sessionStorage.setItem('materias', JSON.stringify(oldMaterias));
+    localStorage.setItem('materias', JSON.stringify(oldMaterias));
     document.getElementById('materia-remove').value = "";
     changeActiveTagModal(5);
     alert(successText);
