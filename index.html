@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./animation.css">
+    <title>Revisão Estudos</title>
+</head>
+<body>
+    <div id="modal-details-subject" class="modal animate">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="transparent transparent-button">X</div>
+                <h3>Detalhes</h3>
+                <button class="circlewrap" onclick="closeModal('modal-details-subject')">X</button>
+            </div>
+            <div class="modal-content">
+                <div class="content-list">
+                    <b>Disciplina:</b>
+                    <p id="modal-subject-name"></p>
+                </div>
+                <div class="content-list">
+                    <b>Data:</b>
+                    <p id="modal-date-subject"></p>
+                </div>
+                <div class="content-list">
+                    <b>Frente:</b>
+                    <p id="modal-subtopic-subject"></p>
+                </div>
+                <div class="content-list">
+                    <b>Matéria:</b>
+                    <p id="modal-materia-subject"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-remove" class="modal animate">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="transparent transparent-button">X</div>
+                <h3>Remover</h3>
+                <button class="circlewrap" onclick="closeModal('modal-remove')">X</button>
+            </div>
+            <div class="modal-subheader">
+                <button id="tag-4" class="tag tag-active" onclick="changeActiveTagModal(4)">Frente</button>
+                <button id="tag-5" class="tag tag-inactive" onclick="changeActiveTagModal(5)">Matéria</button>
+            </div>
+            <div id="modal-content-remove" class="modal-content"></div>
+        </div>
+    </div>
+    <div id="modal-add" class="modal animate">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="transparent transparent-button">X</div>
+                <h3>Adicionar</h3>
+                <button class="circlewrap" onclick="closeModal('modal-add')">X</button>
+            </div>
+            <div class="modal-subheader">
+                <button id="tag-1" class="tag tag-active" onclick="changeActiveTagModal(1)">Disciplina</button>
+                <button id="tag-2" class="tag tag-inactive" onclick="changeActiveTagModal(2)">Frente</button>
+                <button id="tag-3" class="tag tag-inactive" onclick="changeActiveTagModal(3)">Matéria</button>
+            </div>
+            <div id="modal-content-add" class="modal-content"></div>
+        </div>
+    </div>
+    <header>
+        <div class="title">
+            <button class="circlewrap next-left" onclick="previousMonth()">
+                <
+            </button>
+            <div class="month-title">
+                <h1 id="currentMonth">
+                    Março
+                </h1>
+            </div>
+            <button class="circlewrap next-right" onclick="nextMonth()">
+                >
+            </button>
+            <button class="today-option" onclick="goToToday()">
+                Hoje 🗓
+            </button>
+        </div>
+        <div class="options">
+            <button class="circlewrap add-subject" onclick="showModal('modal-remove')">
+                -
+            </button>
+            <button class="circlewrap add-subject" onclick="showModal('modal-add')">
+                +
+            </button>
+            <input class="search-subject" onkeyup="filterSearch()" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisa 🔎">
+        </div>
+    </header>
+    <main id="studies-day-list"></main>
+</body>
+</html>
+<script src="./index.js"></script>
