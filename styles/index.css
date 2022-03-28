@@ -22,7 +22,6 @@
 }
 
 .circlewrap {
-    padding: 0;
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
@@ -133,7 +132,7 @@ main {
 }
 
 .modal-container {
-    height: 85%;
+    height: 90%;
     width: 60%;
     background-color: #f0f0f0;
     display: flex;
@@ -167,6 +166,7 @@ main {
 .tag {
     padding: 0.5rem 1rem;
     border-radius: 4px 4px 0 0;
+    background-color: #f0f0f0;
 }
 
 .tag-inactive {
@@ -189,10 +189,10 @@ main {
 }
 
 .modal-content {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     height: 100%;
     width: 100%;
-    padding: 0 5rem;
+    padding: 0 4rem;
     overflow-y: auto;
 }
 
@@ -203,6 +203,8 @@ main {
 .input-container > input,
 .input-container > select {
     width: 100%;
+    -webkit-appearance: none;
+    background-color: white;
 }
 
 .modal-content p {

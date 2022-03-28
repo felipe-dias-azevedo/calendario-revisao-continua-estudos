@@ -164,7 +164,11 @@ const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
 }
 
-const goToToday = () => {
+const goToToday = (inputType) => {
+    if (inputType === 'title' && window.innerWidth >= 700)
+    {
+        return;
+    }
     monthsForward = 0;
     updateMonth();
     const currentDay = current.getDate();
