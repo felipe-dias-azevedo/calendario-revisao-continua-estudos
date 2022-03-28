@@ -42,3 +42,11 @@
         padding: 0 2rem;
     }
 }
+
+/* até 1000px de altura */
+/* MOBILE */
+@media (max-height: 1000px) {
+    main {
+        margin-top: calc(100vh * 0.2 + 1.5rem);
+    }
+}

@@ -95,9 +95,12 @@ main {
     height: 80px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     background-color: lightgrey;
     padding: 0 1rem;
     border-radius: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .today-study-day {
@@ -113,6 +116,8 @@ main {
     border-radius: 2rem;
     margin-right: 1rem;
     cursor: pointer;
+    white-space: nowrap;
+    font-size: 1.1rem;
 }
 
 .modal {
@@ -243,6 +248,7 @@ main {
 .content-list > b {
     color: black;
     margin: 0;
+    font-size: 1rem;
 }
 
 button.delete {

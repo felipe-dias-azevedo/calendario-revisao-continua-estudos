@@ -99,7 +99,7 @@ const updateMonth = () => {
         if (jsonSubjects !== null) {
             const subjectsToday = jsonSubjects
                 .filter(s => s.date === toFormat(new Date(current.getFullYear(), actualMonth, i)))
-                .filter(s => s.subject.includes(textFilter.toLowerCase()))
+                .filter(s => s.subject.toLowerCase().includes(textFilter))
                 .map(s => studyDay(
                     s.id, 
                     s.subject, 
