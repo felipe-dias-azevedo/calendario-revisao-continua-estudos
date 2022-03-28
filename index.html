@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./global.css">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./animation.css">
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/animation.css">
     <title>Revisão Estudos</title>
 </head>
 <body>
@@ -15,7 +15,9 @@
             <div class="modal-header">
                 <div class="transparent transparent-button">X</div>
                 <h3>Detalhes</h3>
-                <button class="circlewrap" onclick="closeModal('modal-details-subject')">X</button>
+                <button class="circlewrap" onclick="closeModal('modal-details-subject')">
+                    <img src="./images/x.svg" alt="Close Icon">
+                </button>
             </div>
             <div class="modal-content">
                 <div class="content-list">
@@ -42,7 +44,9 @@
             <div class="modal-header">
                 <div class="transparent transparent-button">X</div>
                 <h3>Remover</h3>
-                <button class="circlewrap" onclick="closeModal('modal-remove')">X</button>
+                <button class="circlewrap" onclick="closeModal('modal-remove')">
+                    <img src="./images/x.svg" alt="Close Icon">
+                </button>
             </div>
             <div class="modal-subheader">
                 <button id="tag-4" class="tag tag-active" onclick="changeActiveTagModal(4)">Frente</button>
@@ -56,7 +60,9 @@
             <div class="modal-header">
                 <div class="transparent transparent-button">X</div>
                 <h3>Adicionar</h3>
-                <button class="circlewrap" onclick="closeModal('modal-add')">X</button>
+                <button class="circlewrap" onclick="closeModal('modal-add')">
+                    <img src="./images/x.svg" alt="Close Icon">
+                </button>
             </div>
             <div class="modal-subheader">
                 <button id="tag-1" class="tag tag-active" onclick="changeActiveTagModal(1)">Disciplina</button>
@@ -69,7 +75,7 @@
     <header>
         <div class="title">
             <button class="circlewrap next-left" onclick="previousMonth()">
-                <
+                <img src="./images/chevron-left.svg" alt="Left Arrow Icon">
             </button>
             <div class="month-title">
                 <h1 id="currentMonth">
@@ -77,7 +83,7 @@
                 </h1>
             </div>
             <button class="circlewrap next-right" onclick="nextMonth()">
-                >
+                <img src="./images/chevron-right.svg" alt="Right Arrow Icon">
             </button>
             <button class="today-option" onclick="goToToday()">
                 Hoje 📅
@@ -85,10 +91,10 @@
         </div>
         <div class="options">
             <button class="circlewrap add-subject" onclick="showModal('modal-remove')">
-                -
+                <img src="./images/minus.svg" alt="Minus Icon">
             </button>
             <button class="circlewrap add-subject" onclick="showModal('modal-add')">
-                +
+                <img src="./images/plus.svg" alt="Plus Icon">
             </button>
             <input class="search-subject" onkeyup="filterSearch()" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquisa 🔎">
         </div>
@@ -96,4 +102,4 @@
     <main id="studies-day-list"></main>
 </body>
 </html>
-<script src="./index.js"></script>
+<script src="./scripts/index.js"></script>
