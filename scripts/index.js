@@ -230,6 +230,7 @@ const nextMonth = () => {
 
 const closeModal = (typeModal = 'modal-add') => {
     document.getElementById(typeModal).style.display = 'none';
+    updateMonth();
 }
 
 const populateRemoveTopic = (topic, storage) => {
@@ -314,7 +315,7 @@ const saveSubject = () => {
         values.push(value);
     }
     
-    const successText = "Disciplina Salva!"
+    const successText = "Disciplina Salva!";
 
     const subjects = localStorage.getItem('subjects');
 
@@ -325,7 +326,6 @@ const saveSubject = () => {
         document.getElementById('materia').value = '';
         document.getElementById('date-subject').value = toFormat(current);
         alert(successText);
-        updateMonth();
         return;
     }
 
@@ -339,7 +339,6 @@ const saveSubject = () => {
     document.getElementById('materia').value = '';
     document.getElementById('date-subject').value = toFormat(current);
     alert(successText);
-    updateMonth();
 }
 
 const saveSubtopic = () => {
@@ -350,7 +349,7 @@ const saveSubtopic = () => {
     }
 
     const value = { subtopic };
-    const successText = "Frente Salva!"
+    const successText = "Frente Salva!";
 
     const subtopics = localStorage.getItem('subtopics');
 
@@ -378,7 +377,7 @@ const saveMateria = () => {
     }
 
     const value = { materia, color: materiaColor };
-    const successText = "Matéria Salva!"
+    const successText = "Matéria Salva!";
 
     const materias = localStorage.getItem('materias');
 
@@ -404,7 +403,7 @@ const deleteSubtopic = () => {
         return;
     }
 
-    const successText = "Frente Deletada!"
+    const successText = "Frente Deletada!";
 
     const subtopics = localStorage.getItem('subtopics');
 
@@ -423,7 +422,7 @@ const deleteMateria = () => {
         return;
     }
 
-    const successText = "Matéria Deletada!"
+    const successText = "Matéria Deletada!";
 
     const materias = localStorage.getItem('materias');
 
@@ -432,6 +431,24 @@ const deleteMateria = () => {
     localStorage.setItem('materias', JSON.stringify(oldMaterias));
     document.getElementById('materia-remove').value = "";
     changeActiveTagModal(5);
+    alert(successText);
+}
+
+const deleteSubject = () => {
+    const subject = document.getElementById('modal-subject-name').innerHTML;
+    
+    if (subject.trim() === '') {
+        return;
+    }
+
+    const subjects = localStorage.getItem('subjects');
+
+    let oldSubjects = JSON.parse(subjects);
+    const unfilteredSubjectsCount = oldSubjects.filter(s => s.subject === subject).length;
+    const filteredSubjects = oldSubjects.filter(s => s.subject !== subject);
+    localStorage.setItem('subjects', JSON.stringify(filteredSubjects));
+
+    const successText = `${unfilteredSubjectsCount} Ocorrências de Disciplinas Deletadas! (${subject})`;
     alert(successText);
 }
 
