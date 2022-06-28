@@ -1,0 +1,44 @@
+<app-modal-details-subject></app-modal-details-subject>
+<app-modal-remove></app-modal-remove>
+<app-modal-add></app-modal-add>
+<header>
+  <div class="title">
+    <button class="circlewrap next-left" (click)="previousMonth()">
+      <img src="/assets/images/chevron-left.svg" alt="Left Arrow Icon" />
+    </button>
+    <div class="month-title">
+      <h1 (click)="goToToday('title')">
+        {{ currentMonth }}
+      </h1>
+    </div>
+    <button class="circlewrap next-right" (click)="nextMonth()">
+      <img src="/assets/images/chevron-right.svg" alt="Right Arrow Icon" />
+    </button>
+    <button
+      id="todayOptionButton"
+      class="today-option"
+      (click)="goToToday(null)"
+    >
+      Hoje 📅
+    </button>
+  </div>
+  <div class="options">
+    <button class="circlewrap add-subject" (click)="showModal('modal-remove')">
+      <img src="/assets/images/minus.svg" alt="Minus Icon" />
+    </button>
+    <button class="circlewrap add-subject" (click)="showModal('modal-add')">
+      <img src="/assets/images/plus.svg" alt="Plus Icon" />
+    </button>
+    <input
+      class="search-subject"
+      (keyup)="filterSearch()"
+      type="text"
+      name="pesquisa"
+      id="pesquisa"
+      placeholder="Pesquisa 🔎"
+    />
+  </div>
+</header>
+<main id="studies-day-list" *ngFor="let day of daysList">
+  <app-studies-day-list></app-studies-day-list>
+</main>

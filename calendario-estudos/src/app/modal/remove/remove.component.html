@@ -1,0 +1,36 @@
+<div id="modal-remove" class="modal animate">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="transparent transparent-button">X</div>
+      <h3>Remover</h3>
+      <button class="circlewrap" (click)="closeModal('modal-remove')">
+        <img src="/assets/images/x.svg" alt="Close Icon">
+      </button>
+    </div>
+    <div class="modal-subheader">
+      <button id="tag-4" class="tag tag-active" (click)="changeActiveTagModal(4)">Frente</button>
+      <button id="tag-5" class="tag tag-inactive" (click)="changeActiveTagModal(5)">Matéria</button>
+    </div>
+    <div id="modal-content-remove" class="modal-content">
+      <ng-container *ngIf="removeContent == 'MATERIA'">
+        <div class="input-container">
+          <p>Matéria:</p>
+          <select name="materia-remove" id="materia-remove">
+            <option value="">-- Selecione --</option>
+          </select>
+        </div>
+        <button type="button" class="delete" (click)="deleteMateria()">Deletar</button>
+      </ng-container>
+
+      <ng-container *ngIf="removeContent == 'SUBTOPIC'">
+        <div class="input-container">
+          <p>Frente:</p>
+          <select name="subtopic-remove" id="subtopic-remove">
+            <option value="">-- Selecione --</option>
+          </select>
+        </div>
+        <button type="button" class="delete" (click)="deleteSubtopic()">Deletar</button>
+      </ng-container>
+    </div>
+  </div>
+</div>

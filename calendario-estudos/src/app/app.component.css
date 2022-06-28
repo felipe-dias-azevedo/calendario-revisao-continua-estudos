@@ -1,0 +1,287 @@
+.title {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.month-title {
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-left {
+  margin-right: 1rem;
+}
+
+.next-right {
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+
+.circlewrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
+.circlewrap:hover {
+  background-color: lightgrey;
+}
+
+.circlewrap:active {
+  background-color: grey;
+}
+
+.today-option {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  background-color: lightgrey;
+  transition: 0.3s ease-in-out;
+}
+
+.today-option:hover {
+  border: 2px solid black;
+}
+
+.today-option:active {
+  background-color: grey;
+}
+
+.options {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-subject {
+  width: auto;
+  transition: 0.3s ease-in-out;
+}
+
+.add-subject {
+  margin-right: 1rem;
+}
+
+main {
+  margin: calc(10% + 1rem) 1.5rem 1.5rem;
+  padding-bottom: 1rem;
+  overflow-y: auto;
+}
+
+.subject-container {
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+}
+
+.study-day + .study-day {
+  margin: 1rem 0;
+}
+
+.study-day {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: lightgrey;
+  padding: 0 1rem;
+  border-radius: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.today-study-day {
+  border: 4px solid black;
+}
+
+.study-day > h3 {
+  margin-right: 2rem;
+}
+
+.subject {
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.modal {
+  display: none;
+  color: #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 300;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-container {
+  height: 90%;
+  width: 60%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.modal-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header > h3 {
+  color: black;
+}
+
+.modal-subheader {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  border-radius: 4px 4px 0 0;
+  background-color: #f0f0f0;
+}
+
+.tag-inactive {
+  border-bottom: 2px solid transparent;
+}
+
+.tag-active {
+  border-bottom: 2px solid black;
+}
+
+.modal-subheader > button:hover {
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid black;
+  background-color: lightgrey;
+}
+
+.modal-subheader > button:active {
+  background-color: grey;
+}
+
+.modal-content {
+  margin-top: 1.5rem;
+  height: 100%;
+  width: 100%;
+  padding: 0 4rem;
+  overflow-y: auto;
+}
+
+.modal-content-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#modal-content-details {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  margin: 1rem 0;
+}
+
+.input-container > input,
+.input-container > select {
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: white;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.modal-content button {
+  margin: 2rem 0;
+  width: 100%;
+  background-color: lightskyblue;
+  border: 2px solid transparent;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+
+.modal-content button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.modal-content button:active {
+  border: 2px solid white;
+}
+
+.content-list {
+  width: 100%;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  border-bottom: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-list > p,
+.content-list > b {
+  color: black;
+  margin: 0;
+  font-size: 1rem;
+}
+
+button.delete {
+  background-color: darkred;
+  color: white;
+}
+
+button.delete:hover {
+  background-color: red;
+  color: black;
+}
+
+.transparent {
+  color: transparent;
+  cursor: default;
+}
+
+.transparent-button {
+  padding: 0;
+  border: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,36 @@
+<div id="modal-details-subject" class="modal animate">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="transparent transparent-button">X</div>
+      <h3>Detalhes</h3>
+      <button class="circlewrap" onclick="closeModal('modal-details-subject')">
+        <img src="/assets/images/x.svg" alt="Close Icon">
+      </button>
+    </div>
+    <div id="modal-content-details" class="modal-content">
+      <div class="modal-content-container">
+        <div class="content-list">
+          <b>Disciplina:</b>
+          <p id="modal-subject-name"></p>
+        </div>
+        <div class="content-list">
+          <b>Data:</b>
+          <p id="modal-date-subject"></p>
+        </div>
+        <div class="content-list">
+          <b>Frente:</b>
+          <p id="modal-subtopic-subject"></p>
+        </div>
+        <div class="content-list">
+          <b>Matéria:</b>
+          <p id="modal-materia-subject"></p>
+        </div>
+      </div>
+      <div class="delete-container">
+        <button type="button" class="delete" onclick="deleteSubject()">
+          Deletar Todas as Ocorrências
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
