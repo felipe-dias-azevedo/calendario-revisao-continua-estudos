@@ -1,8 +1,8 @@
 
-/* até 700px de largura */
+/* até 800px de largura */
 /* MOBILE */
-@media (max-width: 700px) {
-  header {
+@media (max-width: 800px) {
+  .toolbar-header {
     height: 20%;
     flex-direction: column;
     justify-content: center;
@@ -42,10 +42,18 @@
   }
 }
 
-/* até 1000px de altura */
+/* até 1000px de altura e 800px de largura */
 /* MOBILE */
-@media (max-height: 1000px) {
+@media (max-height: 1000px) and (max-width: 800px) {
   main {
     margin-top: calc(100vh * 0.2 + 1.5rem);
+  }
+}
+
+/* depois de 1000px de altura e 800px de largura */
+/* MOBILE */
+@media (min-width: 801px) {
+  main {
+    margin-top: calc(100vh * 0.1 + 1.5rem);
   }
 }

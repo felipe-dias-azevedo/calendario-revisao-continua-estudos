@@ -1,7 +1,7 @@
 <app-modal-details-subject *ngIf="isModalShown.detailsSubject"></app-modal-details-subject>
 <app-modal-remove *ngIf="isModalShown.remove"></app-modal-remove>
 <app-modal-add *ngIf="isModalShown.add"></app-modal-add>
-<header>
+<mat-toolbar class="toolbar-header">
   <div class="title">
     <button class="circlewrap next-left" (click)="previousMonth()">
       <img src="/assets/images/chevron-left.svg" alt="Left Arrow Icon" />
@@ -29,6 +29,11 @@
     <button class="circlewrap add-subject" (click)="showAddModal()">
       <img src="/assets/images/plus.svg" alt="Plus Icon" />
     </button>
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>Pesquisa</mat-label>-->
+<!--      <input matInput placeholder="Nome da Disciplina">-->
+<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+<!--    </mat-form-field>-->
     <input
       class="search-subject"
       (keyup)="filterSearch()"
@@ -39,10 +44,15 @@
       placeholder="Pesquisa 🔎"
     />
   </div>
-</header>
-<main id="studies-day-list" *ngFor="let day of subjectPerDayList">
-  <app-studies-day-list
-    [day]=""
-    [subjectsToday]=""
-  ></app-studies-day-list>
+</mat-toolbar>
+<main id="studies-day-list">
+  <div
+    *ngFor="let studyDay of subjectPerDayList"
+    app-studies-day-list
+    [day]="studyDay.day"
+    [subjectsToday]="studyDay.content"
+    id="dia-{{ studyDay.day }}"
+    class="study-day {{ isTodayStudyDay(studyDay.day) ? 'today-study-day' : '' }}"
+  >
+  </div>
 </main>

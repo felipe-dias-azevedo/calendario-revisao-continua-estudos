@@ -10,6 +10,10 @@ import { DetailsSubjectComponent } from './modal/details-subject/details-subject
 import { RemoveComponent } from './modal/remove/remove.component';
 import { AddComponent } from './modal/add/add.component';
 import {FormsModule} from "@angular/forms";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -19,17 +23,21 @@ import {FormsModule} from "@angular/forms";
     RemoveComponent,
     AddComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }),
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    FormsModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
