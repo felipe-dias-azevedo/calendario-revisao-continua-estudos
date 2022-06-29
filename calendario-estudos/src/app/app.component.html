@@ -1,13 +1,13 @@
-<app-modal-details-subject></app-modal-details-subject>
-<app-modal-remove></app-modal-remove>
-<app-modal-add></app-modal-add>
+<app-modal-details-subject *ngIf="isModalShown.detailsSubject"></app-modal-details-subject>
+<app-modal-remove *ngIf="isModalShown.remove"></app-modal-remove>
+<app-modal-add *ngIf="isModalShown.add"></app-modal-add>
 <header>
   <div class="title">
     <button class="circlewrap next-left" (click)="previousMonth()">
       <img src="/assets/images/chevron-left.svg" alt="Left Arrow Icon" />
     </button>
     <div class="month-title">
-      <h1 (click)="goToToday('title')">
+      <h1 (click)="goToTodayTitle()">
         {{ currentMonth }}
       </h1>
     </div>
@@ -17,21 +17,22 @@
     <button
       id="todayOptionButton"
       class="today-option"
-      (click)="goToToday(null)"
+      (click)="goToToday()"
     >
       Hoje 📅
     </button>
   </div>
   <div class="options">
-    <button class="circlewrap add-subject" (click)="showModal('modal-remove')">
+    <button class="circlewrap add-subject" (click)="showRemoveModal()">
       <img src="/assets/images/minus.svg" alt="Minus Icon" />
     </button>
-    <button class="circlewrap add-subject" (click)="showModal('modal-add')">
+    <button class="circlewrap add-subject" (click)="showAddModal()">
       <img src="/assets/images/plus.svg" alt="Plus Icon" />
     </button>
     <input
       class="search-subject"
       (keyup)="filterSearch()"
+      [(ngModel)]="textFilter"
       type="text"
       name="pesquisa"
       id="pesquisa"
@@ -39,6 +40,9 @@
     />
   </div>
 </header>
-<main id="studies-day-list" *ngFor="let day of daysList">
-  <app-studies-day-list></app-studies-day-list>
+<main id="studies-day-list" *ngFor="let day of subjectPerDayList">
+  <app-studies-day-list
+    [day]=""
+    [subjectsToday]=""
+  ></app-studies-day-list>
 </main>

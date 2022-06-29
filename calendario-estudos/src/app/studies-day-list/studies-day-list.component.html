@@ -1,12 +1,12 @@
 <div id="dia-{{ day }}" class="study-day">
   <h3>{{ day }}</h3>
-  <ng-container *ngFor="let studyDay of studyDayList">
+  <ng-container *ngFor="let subject of subjectsToday">
     <div
       class="subject"
-      (click)="showModal('modal-details-subject', studyDay.id)"
-      [ngStyle]="{'background-color': studyDay.backgroundColor, 'color': studyDay.color}"
+      (click)="showModal('modal-details-subject', subject.id)"
+      [ngStyle]="{'background-color': subject.backgroundColor, 'color': subject.color}"
     >
-      <p>{{ studyDay.name }}</p>
+      <p>{{ subject.name }}</p>
     </div>
   </ng-container>
 </div>

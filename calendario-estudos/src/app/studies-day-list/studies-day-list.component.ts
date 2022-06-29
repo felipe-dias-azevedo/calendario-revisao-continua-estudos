@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-studies-day-list',
@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./studies-day-list.component.css']
 })
 export class StudiesDayListComponent implements OnInit {
-  day: any;
-  studyDayList: any;
+  @Input() day: any;
+  @Input() subjectsToday: any;
 
   constructor() { }
 
