@@ -72,7 +72,7 @@ export class ModalAddComponent implements OnInit {
   }
 
   saveMateria() {
-    if (this.materiaName.trim() === '') {
+    if (this.materiaName === undefined || this.materiaName.trim() === '') {
       this.notifyError();
       return;
     }
@@ -89,8 +89,11 @@ export class ModalAddComponent implements OnInit {
 
   saveSubject() {
     if (
+      this.subjectName === undefined ||
       this.subjectName.trim() === '' ||
+      this.subtopicId === undefined ||
       this.subtopicId.trim() === '' ||
+      this.materiaId === undefined ||
       this.materiaId.trim() === ''
     ) {
       this.notifyError();
@@ -114,7 +117,7 @@ export class ModalAddComponent implements OnInit {
   }
 
   saveSubtopic() {
-    if (this.subtopicName.trim() === '') {
+    if (this.subtopicName === undefined || this.subtopicName.trim() === '') {
       this.notifyError();
       return;
     }

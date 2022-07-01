@@ -23,7 +23,7 @@ export class MateriaService {
     this.contextStorageService.add(this.key, materia);
   }
 
-  delete(id: string): void {
-    this.contextStorageService.delete(this.key, id);
+  deleteById(id: string): void {
+    this.contextStorageService.deleteById(this.key, id);
   }
 }

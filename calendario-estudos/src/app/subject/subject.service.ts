@@ -34,12 +34,16 @@ export class SubjectService {
       return {...subject, date};
     });
 
-    for (const s of subjects) {
-      this.add(s);
-    }
+    subjects.forEach(s => this.add(s));
   }
 
-  delete(id: string): void {
-    this.contextStorageService.delete(this.key, id);
+  deleteById(id: string): void {
+    this.contextStorageService.deleteById(this.key, id);
+  }
+
+  deleteByName(name: string): void {
+    this.get()
+      .filter(s => s.name === name)
+      .forEach(s => this.deleteById(s.id));
   }
 }

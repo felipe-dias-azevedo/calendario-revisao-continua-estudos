@@ -21,6 +21,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatListModule} from "@angular/material/list";
+import { ModalAlertComponent } from './shared/components/modal-alert/modal-alert.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     StudiesDayListComponent,
     ModalDetailsSubjectComponent,
     ModalRemoveComponent,
-    ModalAddComponent
+    ModalAddComponent,
+    ModalAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}

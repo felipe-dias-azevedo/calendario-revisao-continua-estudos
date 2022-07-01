@@ -127,12 +127,12 @@ export class AppComponent implements OnInit {
     this.updateMonth();
   }
 
-  filterSearch() {
+  updateData() {
     this.updateMonth();
   }
 
   showRemoveModal() {
-    const modalRemove = this.dialog.open(ModalRemoveComponent);
+    const modalRemove = this.dialog.open(ModalRemoveComponent, { panelClass: 'modal-container' });
 
     modalRemove.afterClosed().subscribe(() => this.updateMonth());
   }

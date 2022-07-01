@@ -41,7 +41,7 @@ export class ContextStorageService <T extends IdentifiableContext, NT> {
     sessionStorage.setItem(key, jsonContent);
   }
 
-  delete(key: string, id: string): void {
+  deleteById(key: string, id: string): void {
     const contentString = sessionStorage.getItem(key);
 
     if (contentString === null) {
@@ -51,6 +51,10 @@ export class ContextStorageService <T extends IdentifiableContext, NT> {
     let oldContent: T[] = JSON.parse(contentString);
     const contents = oldContent.filter(m => m.id !== id);
     const jsonContent = JSON.stringify(contents);
-    localStorage.setItem(key, jsonContent);
+    sessionStorage.setItem(key, jsonContent);
+  }
+
+  deleteAll(key: string): void {
+    sessionStorage.removeItem(key);
   }
 }
