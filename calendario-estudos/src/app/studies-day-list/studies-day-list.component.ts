@@ -22,7 +22,8 @@ export class StudiesDayListComponent implements OnInit {
 
   showDetailsModal(id: string): void {
     this.dialog.open(ModalDetailsSubjectComponent, {
-      data: { id }
+      data: { id },
+      panelClass: 'modal-container'
     });
   }
 }

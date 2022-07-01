@@ -63,3 +63,15 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 0.3rem;
 }
+
+.modal-container {
+  height: 90%;
+  min-width: 60%;
+}
+
+@media (max-width: 800px) {
+  .modal-container {
+    height: 98%;
+    min-width: 95%;
+  }
+}

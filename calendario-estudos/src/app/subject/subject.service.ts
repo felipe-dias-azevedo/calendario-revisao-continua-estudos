@@ -20,8 +20,23 @@ export class SubjectService {
       });
   }
 
-  add(materia: NewSubject): void {
-    this.contextStorageService.add(this.key, materia);
+  getById(id: string): Subject | null {
+    return this.contextStorageService.getById(this.key, id);
+  }
+
+  add(subject: NewSubject): void {
+    this.contextStorageService.add(this.key, subject);
+  }
+
+  addInDays(subject: NewSubject, days: number[]): void {
+    const subjects = days.map(d => {
+      const date = subject.date.addDays(d).clone();
+      return {...subject, date};
+    });
+
+    for (const s of subjects) {
+      this.add(s);
+    }
   }
 
   delete(id: string): void {

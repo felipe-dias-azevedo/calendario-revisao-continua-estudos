@@ -15,6 +15,10 @@ export class SubtopicService {
     return this.contextStorageService.get(this.key);
   }
 
+  getById(id: string): Subtopic | null {
+    return this.contextStorageService.getById(this.key, id);
+  }
+
   add(materia: NewSubtopic): void {
     this.contextStorageService.add(this.key, materia);
   }

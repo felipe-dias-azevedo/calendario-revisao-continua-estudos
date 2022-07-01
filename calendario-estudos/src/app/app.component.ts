@@ -8,6 +8,8 @@ import {Subject} from "./subject/subject";
 import {MatDialog} from "@angular/material/dialog";
 import {ModalAddComponent} from "./modal/add/modal-add.component";
 import {ModalRemoveComponent} from "./modal/remove/modal-remove.component";
+import './shared/extensions/date.extensions';
+import {getTextColorFrom} from "./shared/colors";
 
 @Component({
   selector: 'app-root',
@@ -40,37 +42,13 @@ export class AppComponent implements OnInit {
     this.updateMonth();
   }
 
-  // TODO: Make static and to date helpers (or date extension)
-  private daysInMonth(month: number, year: number) {
-    return new Date(year, month + 1, 0).getDate();
-  }
-
-  // TODO: Make static and to date helpers (or date extension)
-  private equals(date1: Date, date2: Date): boolean {
-    return date1.getFullYear() === date2.getFullYear() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate();
-  }
-
-  // TODO: Make static and to color helpers
-  private getTextColorFrom(backgroundColor: string) {
-    let colorHexa = backgroundColor.split("#")[1];
-    let rgb = [
-      parseInt(colorHexa.slice(0,2), 16),
-      parseInt(colorHexa.slice(2,4), 16),
-      parseInt(colorHexa.slice(4,6), 16)
-    ];
-    const brightness = Math.round(((rgb[0] * 299) + (rgb[1] * 587) + (rgb[2] * 114)) / 1000);
-    return brightness > 50 ? 'black' : 'white';
-  }
-
   private getStudyDayForDay(day: number, month: number, subjects: Subject[]): StudyDay {
     if (subjects.length == 0) {
       return { day, content: [] };
     }
 
     const subjectsForDay = subjects
-      .filter(s => this.equals(s.date, new Date(this.now.getFullYear(), month, day)))
+      .filter(s => s.date.isSameDate(new Date(this.now.getFullYear(), month, day)))
       .filter(s => s.name.toLowerCase().includes(this.textFilter))
       .map(s => {
         const materia = this.materiaService.getById(s.materiaId);
@@ -78,7 +56,7 @@ export class AppComponent implements OnInit {
         const studyDay: StudyDayContent = {
           subject: s,
           color,
-          textColor: this.getTextColorFrom(color)
+          textColor: getTextColorFrom(color)
         }
         return studyDay;
       });
@@ -92,7 +70,7 @@ export class AppComponent implements OnInit {
     let studiesDaysData: StudiesDaysList = [];
     const subjects = this.subjectService.get();
 
-    for (let day = 1; day <= this.daysInMonth(actualMonth, this.now.getFullYear()); day++) {
+    for (let day = 1; day <= this.now.daysInMonth(actualMonth); day++) {
       const studyDay = this.getStudyDayForDay(day, actualMonth, subjects);
       studiesDaysData = [studyDay, ...studiesDaysData]
     }
@@ -160,7 +138,7 @@ export class AppComponent implements OnInit {
   }
 
   showAddModal() {
-    const modalAdd = this.dialog.open(ModalAddComponent, { height: '90%', width: '60%' });
+    const modalAdd = this.dialog.open(ModalAddComponent, { panelClass: 'modal-container' });
 
     modalAdd.afterClosed().subscribe(() => this.updateMonth());
   }

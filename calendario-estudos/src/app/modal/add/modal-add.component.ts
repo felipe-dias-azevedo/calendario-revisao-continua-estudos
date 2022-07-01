@@ -8,6 +8,7 @@ import {ModalAddTabType} from "./modal-add-tab-type";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {NewSubject, Subject} from "../../subject/subject";
 import {MatTabChangeEvent} from "@angular/material/tabs";
+import {NotifyService} from "../../shared/notify/notify.service";
 
 @Component({
   selector: 'app-modal-add',
@@ -40,7 +41,7 @@ export class ModalAddComponent implements OnInit {
     private subjectService: SubjectService,
     private subtopicService: SubtopicService,
     private materiaService: MateriaService,
-    private notifyService: MatSnackBar
+    private notifyService: NotifyService
   ) { }
 
   ngOnInit(): void {
@@ -96,12 +97,16 @@ export class ModalAddComponent implements OnInit {
       return;
     }
 
-    this.subjectService.add({
+    const subject: NewSubject = {
       name: this.subjectName,
       materiaId: this.materiaId,
       subtopicId: this.subtopicId,
       date: this.dataInicio
-    });
+    };
+
+    const daysToAdd = [0,7,15,30].map(x => x + 1);
+
+    this.subjectService.addInDays(subject, daysToAdd);
 
     this.notify('Disciplina salva com sucesso!');
 
@@ -124,11 +129,7 @@ export class ModalAddComponent implements OnInit {
   }
 
   private notify(message: string) {
-    this.notifyService.open(message, this.mensagemFechar, {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center'
-    });
+    this.notifyService.show(message);
   }
 
   private notifyError() {

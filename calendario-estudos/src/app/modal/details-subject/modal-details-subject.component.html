@@ -11,23 +11,23 @@
       <div class="modal-content-container">
         <div class="content-list">
           <b>Disciplina:</b>
-          <p id="modal-subject-name"></p>
+          <p>{{ subject.name }}</p>
         </div>
         <div class="content-list">
           <b>Data:</b>
-          <p id="modal-date-subject"></p>
+          <p>{{ subject.date | date: 'dd/MM/yyyy' }}</p>
         </div>
         <div class="content-list">
           <b>Frente:</b>
-          <p id="modal-subtopic-subject"></p>
+          <p>{{ subtopic?.name }}</p>
         </div>
         <div class="content-list">
           <b>Matéria:</b>
-          <p id="modal-materia-subject"></p>
+          <p>{{ materia?.name }}</p>
         </div>
       </div>
       <div class="delete-container">
-        <button type="button" class="delete" onclick="deleteSubject()">
+        <button mat-raised-button color="warn" (click)="deleteSubject()">
           Deletar Todas as Ocorrências
         </button>
       </div>

@@ -19,6 +19,12 @@ export class ContextStorageService <T extends IdentifiableContext, NT> {
     return JSON.parse(contentString);
   }
 
+  getById(key: string, id: string): T | null {
+    const contents = this.get(key);
+    const content = contents.find(m => m.id === id);
+    return content || null;
+  }
+
   add(key: string, content: NT): void {
     const newContent = { id: uuid(), ...content };
     const contentString = sessionStorage.getItem(key);

@@ -1,4 +1,3 @@
-
 <div class="modal-header">
   <h4 class="force-font">Adicionar</h4>
 
@@ -10,9 +9,14 @@
   </button>
 </div>
 
-<mat-dialog-content>
-  <mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedTabChange)="changeTabType($event)">
 
+<mat-tab-group
+  class="tab-label-top"
+  mat-align-tabs="center"
+  animationDuration="0ms"
+  (selectedTabChange)="changeTabType($event)"
+>
+  <mat-dialog-content>
     <mat-tab label="Disciplina">
       <ng-template matTabContent >
         <div class="tab-content tab-label-top">
@@ -55,7 +59,7 @@
             <mat-label>Data de Início</mat-label>
             <input matInput [matDatepicker]="picker" [(ngModel)]="dataInicio" disabled>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker [disabled]="false" #picker></mat-datepicker>
+            <mat-datepicker touchUi [disabled]="false" #picker></mat-datepicker>
           </mat-form-field>
         </div>
       </ng-template>
@@ -94,8 +98,9 @@
         </div>
       </ng-template>
     </mat-tab>
-  </mat-tab-group>
-</mat-dialog-content>
+  </mat-dialog-content>
+</mat-tab-group>
+
 <mat-dialog-actions align="end">
   <button mat-flat-button [mat-dialog-close]="true">Cancelar</button>
   <button mat-flat-button color="primary" *ngIf="tabType.valueOf() === 0" (click)="saveSubject()">Salvar</button>
