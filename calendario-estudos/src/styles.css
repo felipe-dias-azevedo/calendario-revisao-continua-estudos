@@ -10,6 +10,14 @@
   transition: 0.1s ease;
 }
 
+.force-font {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.normalize-font {
+  font-size: 16px;
+}
+
 body {
   height: 100vh;
   font-size: 24px;
@@ -18,7 +26,6 @@ body {
 
 button, input, textarea, select {
   font-size: 1rem;
-  color: black;
 }
 
 button {

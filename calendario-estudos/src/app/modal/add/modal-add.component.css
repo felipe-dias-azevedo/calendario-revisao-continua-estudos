@@ -1,0 +1,26 @@
+.modal-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab-label-top {
+  padding-top: 1rem;
+}
+
+.input-container {
+  margin: 1rem 0 0 0;
+}
+
+.input-container > input,
+.input-container > select {
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: white;
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+}

@@ -15,6 +15,12 @@ export class MateriaService {
     return this.contextStorageService.get(this.key);
   }
 
+  getById(id: string): Materia | null {
+    const materias = this.get();
+    const materia = materias.find(m => m.id === id);
+    return materia || null;
+  }
+
   add(materia: NewMateria): void {
     this.contextStorageService.add(this.key, materia);
   }

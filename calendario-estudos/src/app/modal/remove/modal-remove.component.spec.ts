@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveComponent } from './remove.component';
+import { ModalRemoveComponent } from './modal-remove.component';
 
 describe('RemoveComponent', () => {
-  let component: RemoveComponent;
-  let fixture: ComponentFixture<RemoveComponent>;
+  let component: ModalRemoveComponent;
+  let fixture: ComponentFixture<ModalRemoveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemoveComponent ]
+      declarations: [ ModalRemoveComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RemoveComponent);
+    fixture = TestBed.createComponent(ModalRemoveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

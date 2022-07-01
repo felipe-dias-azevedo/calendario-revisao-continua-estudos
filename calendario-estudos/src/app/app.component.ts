@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {ShowModal} from "./shared/show-modal/show-modal";
-import {StateModalShownService} from "./shared/show-modal/state-modal-shown.service";
 import {months} from "./shared/months";
 import {SubtopicService} from "./subtopic/subtopic.service";
 import {SubjectService} from "./subject/subject.service";
 import {MateriaService} from "./materia/materia.service";
 import {StudiesDaysList, StudyDay, StudyDayContent} from "./studies-day-list/studies-day-list";
 import {Subject} from "./subject/subject";
-import {Materia} from "./materia/materia";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalAddComponent} from "./modal/add/modal-add.component";
+import {ModalRemoveComponent} from "./modal/remove/modal-remove.component";
 
 @Component({
   selector: 'app-root',
@@ -25,18 +25,14 @@ export class AppComponent implements OnInit {
   currentMonth!: string;
   textFilter!: string
 
-  isModalShown!: ShowModal
-
   constructor(
-    private modalShownService: StateModalShownService,
+    private dialog: MatDialog,
     private subjectService: SubjectService,
     private subtopicService: SubtopicService,
     private materiaService: MateriaService
   ) {}
 
   ngOnInit(): void {
-    this.modalShownService.modalShown.subscribe(s => this.isModalShown = s);
-
     this.now = new Date();
     this.monthsForward = 0;
     this.textFilter = "";
@@ -68,7 +64,7 @@ export class AppComponent implements OnInit {
     return brightness > 50 ? 'black' : 'white';
   }
 
-  private getStudyDayForDay(day: number, month: number, subjects: Subject[], materias: Materia[]): StudyDay {
+  private getStudyDayForDay(day: number, month: number, subjects: Subject[]): StudyDay {
     if (subjects.length == 0) {
       return { day, content: [] };
     }
@@ -77,8 +73,8 @@ export class AppComponent implements OnInit {
       .filter(s => this.equals(s.date, new Date(this.now.getFullYear(), month, day)))
       .filter(s => s.name.toLowerCase().includes(this.textFilter))
       .map(s => {
-        const materia = materias.find(m => m.id === s.id);
-        const color = materia === undefined ? '#000000' : materia.color;
+        const materia = this.materiaService.getById(s.materiaId);
+        const color = materia === null ? '#000000' : materia.color;
         const studyDay: StudyDayContent = {
           subject: s,
           color,
@@ -94,11 +90,10 @@ export class AppComponent implements OnInit {
     this.currentMonth = months[actualMonth];
 
     let studiesDaysData: StudiesDaysList = [];
-    const materias = this.materiaService.get();
     const subjects = this.subjectService.get();
 
     for (let day = 1; day <= this.daysInMonth(actualMonth, this.now.getFullYear()); day++) {
-      const studyDay = this.getStudyDayForDay(day, actualMonth, subjects, materias);
+      const studyDay = this.getStudyDayForDay(day, actualMonth, subjects);
       studiesDaysData = [studyDay, ...studiesDaysData]
     }
 
@@ -159,10 +154,14 @@ export class AppComponent implements OnInit {
   }
 
   showRemoveModal() {
-    this.modalShownService.updateState({ remove: true });
+    const modalRemove = this.dialog.open(ModalRemoveComponent);
+
+    modalRemove.afterClosed().subscribe(() => this.updateMonth());
   }
 
   showAddModal() {
-    this.modalShownService.updateState({ add: true });
+    const modalAdd = this.dialog.open(ModalAddComponent, { height: '90%', width: '60%' });
+
+    modalAdd.afterClosed().subscribe(() => this.updateMonth());
   }
 }

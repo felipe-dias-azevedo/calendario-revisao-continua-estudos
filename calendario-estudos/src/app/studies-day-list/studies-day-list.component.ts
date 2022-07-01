@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StudyDayContent} from "./studies-day-list";
-import {StateModalShownService} from "../shared/show-modal/state-modal-shown.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalDetailsSubjectComponent} from "../modal/details-subject/modal-details-subject.component";
 
 @Component({
   selector: '[app-studies-day-list]',
@@ -13,13 +14,15 @@ export class StudiesDayListComponent implements OnInit {
   @Input() subjectsToday!: StudyDayContent[];
 
   constructor(
-    private modalShownService: StateModalShownService
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
   }
 
   showDetailsModal(id: string): void {
-    this.modalShownService.updateState({ detailsSubject: true });
+    this.dialog.open(ModalDetailsSubjectComponent, {
+      data: { id }
+    });
   }
 }

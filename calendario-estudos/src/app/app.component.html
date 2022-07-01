@@ -1,48 +1,40 @@
-<app-modal-details-subject *ngIf="isModalShown.detailsSubject"></app-modal-details-subject>
-<app-modal-remove *ngIf="isModalShown.remove"></app-modal-remove>
-<app-modal-add *ngIf="isModalShown.add"></app-modal-add>
-<mat-toolbar class="toolbar-header">
+<mat-toolbar color="primary" class="toolbar-header">
   <div class="title">
-    <button class="circlewrap next-left" (click)="previousMonth()">
-      <img src="/assets/images/chevron-left.svg" alt="Left Arrow Icon" />
+    <button mat-icon-button class="next-left" (click)="previousMonth()">
+      <mat-icon>chevron_left</mat-icon>
     </button>
     <div class="month-title">
-      <h1 (click)="goToTodayTitle()">
+      <h1 class="force-font" (click)="goToTodayTitle()">
         {{ currentMonth }}
       </h1>
     </div>
-    <button class="circlewrap next-right" (click)="nextMonth()">
-      <img src="/assets/images/chevron-right.svg" alt="Right Arrow Icon" />
+    <button mat-icon-button class="next-right" (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
     </button>
     <button
-      id="todayOptionButton"
-      class="today-option"
+      mat-raised-button
+      class="force-font today-option"
       (click)="goToToday()"
     >
       Hoje 📅
     </button>
   </div>
   <div class="options">
-    <button class="circlewrap add-subject" (click)="showRemoveModal()">
-      <img src="/assets/images/minus.svg" alt="Minus Icon" />
+    <button mat-icon-button class="add-subject" (click)="showRemoveModal()">
+      <mat-icon>remove</mat-icon>
     </button>
-    <button class="circlewrap add-subject" (click)="showAddModal()">
-      <img src="/assets/images/plus.svg" alt="Plus Icon" />
+    <button mat-icon-button class="add-subject" (click)="showAddModal()">
+      <mat-icon>add</mat-icon>
     </button>
-<!--    <mat-form-field appearance="outline">-->
-<!--      <mat-label>Pesquisa</mat-label>-->
-<!--      <input matInput placeholder="Nome da Disciplina">-->
-<!--      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
-<!--    </mat-form-field>-->
-    <input
-      class="search-subject"
-      (keyup)="filterSearch()"
-      [(ngModel)]="textFilter"
-      type="text"
-      name="pesquisa"
-      id="pesquisa"
-      placeholder="Pesquisa 🔎"
-    />
+    <mat-form-field class="normalize-font">
+      <mat-label>Pesquisa</mat-label>
+      <input
+        matInput
+        (keyup)="filterSearch()"
+        [(ngModel)]="textFilter"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
   </div>
 </mat-toolbar>
 <main id="studies-day-list">
