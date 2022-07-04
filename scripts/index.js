@@ -88,7 +88,7 @@ const updateMonth = () => {
     let currentMonthElem = document.getElementById('currentMonth');
     const actualMonth = current.getMonth() + monthsForward;
     currentMonthElem.innerHTML = months[actualMonth];
-
+    
     let studiesDayList = document.getElementById('studies-day-list');
     let studiesDaysData = "";
     const materias = localStorage.getItem('materias');
@@ -450,6 +450,26 @@ const deleteSubject = () => {
 
     const successText = `${unfilteredSubjectsCount} Ocorrências de Disciplinas Deletadas! (${subject})`;
     alert(successText);
+}
+
+const exportData = () => {
+    const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+    const materias = JSON.parse(localStorage.getItem('materias')) || [];
+    const subtopics = JSON.parse(localStorage.getItem('subtopics')) || [];
+    
+    const dataObject = {
+        subjects,
+        materias,
+        subtopics
+    }
+
+    const today = toFormat(current);
+
+    const file = new Blob([JSON.stringify(dataObject)], { type: "text/json" });
+    const exportElem = document.createElement("a");
+    exportElem.href = URL.createObjectURL(file);
+    exportElem.download = `dados-calendario-revisao-estudos-${today}.json`;
+    exportElem.click();
 }
 
 onInit();
